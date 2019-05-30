@@ -3,6 +3,7 @@ package tdd.intervalHierarchy;
 public class ClosedInterval {
 
 	private double min;
+
 	private double max;
 
 	public ClosedInterval(double min, double max) {
@@ -11,8 +12,13 @@ public class ClosedInterval {
 	}
 
 	public boolean isIntersected(ClosedInterval another) {
-		return this.min <= another.max  && another.min <= this.max;
+		return this.isIncluded(another.min) ||
+				this.isIncluded(another.max)||
+				another.isIncluded(this.min);
 	}
 
-	
+	private boolean isIncluded(double value) {
+		return this.min <= value && value <= this.max;
+	}
+
 }
