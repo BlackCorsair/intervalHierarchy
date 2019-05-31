@@ -10,7 +10,11 @@ public class OpenInterval extends Interval{
 	
 	@Override
 	public boolean isIntersected(Interval another) {
-		return this.isIncluded(another.min) || this.isIncluded(another.max);
+		return this.isIncluded(another.min) || this.isIncluded(another.max) || sameLength(another);
+	}
+	
+	private boolean sameLength(Interval another) {
+		return this.min == another.min && this.max == another.max;
 	}
 	
 	@Override
