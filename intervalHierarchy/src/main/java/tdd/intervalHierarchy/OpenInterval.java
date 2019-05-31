@@ -1,5 +1,7 @@
 package tdd.intervalHierarchy;
 
+import javax.print.attribute.standard.MediaSize.Other;
+
 public class OpenInterval extends Interval{
 
 	public OpenInterval(double min, double max) {

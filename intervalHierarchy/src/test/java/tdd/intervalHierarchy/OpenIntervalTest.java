@@ -1,6 +1,7 @@
 package tdd.intervalHierarchy;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -47,5 +48,19 @@ public class OpenIntervalTest {
 		Interval one = new IntervalBuilder().min(3).max(14).build();
 		Interval another = new IntervalBuilder().min(0).max(2).build();
 		assertFalse(one.isIntersected(another));
+	}
+	
+	@Test
+	public void testIsIntersectedWhenOverlapingLeft() {
+		Interval one = new IntervalBuilder().min(3).max(14).build();
+		Interval another = new IntervalBuilder().min(-2).max(4).build();
+		assertTrue(one.isIntersected(another));
+	}
+	
+	@Test
+	public void testIsIntersectedWhenOverlapingRight() {
+		Interval one = new IntervalBuilder().min(3).max(14).build();
+		Interval another = new IntervalBuilder().min(4).max(44).build();
+		assertTrue(one.isIntersected(another));
 	}
 }
