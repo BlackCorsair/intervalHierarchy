@@ -3,63 +3,63 @@ package tdd.intervalHierarchy;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import testBuilders.ClosedIntervalBuilder;
+import testBuilders.IntervalBuilder;
 
 public class ClosedIntervalTest extends TestCase {
 
 	@Test
 	public void testIsIntersectedOverlapingByLeft() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(1).max(7).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(1).max(7).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedOverlapingByLeftWithEquals() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(3).max(7).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(3).max(7).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedOverlapingByEquals() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(3).max(14).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(3).max(14).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedOverlapingByRight() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(7).max(17).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(7).max(17).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedOverlapingByBoth() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(0).max(17).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(0).max(17).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedOverlapingByInside() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(5).max(10).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(5).max(10).closed().build();
 		assertTrue(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedNotOverlapingByLeft() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(0).max(2).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(0).max(2).closed().build();
 		assertFalse(one.isIntersected(another));
 	}
 	
 	@Test
 	public void testIsIntersectedNotOverlapingByRight() {
-		ClosedInterval one = new ClosedIntervalBuilder().min(3).max(14).build();
-		ClosedInterval another = new ClosedIntervalBuilder().min(16).max(22).build();
+		Interval one = new IntervalBuilder().min(3).max(14).closed().build();
+		Interval another = new IntervalBuilder().min(16).max(22).closed().build();
 		assertFalse(one.isIntersected(another));
 	}
 }

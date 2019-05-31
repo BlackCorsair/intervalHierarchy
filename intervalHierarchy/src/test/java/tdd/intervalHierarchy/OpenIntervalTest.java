@@ -4,13 +4,13 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import testBuilders.OpenIntervalBuilder;
+import testBuilders.IntervalBuilder;
 
 public class OpenIntervalTest {
 	@Test
 	public void testIsNotIntersectedWhenMaxEqualsMin() {
-		OpenInterval one = new OpenIntervalBuilder().min(3).max(14).build();
-		OpenInterval another = new OpenIntervalBuilder().min(-1).max(3).build();
+		Interval one = new IntervalBuilder().min(3).max(14).build();
+		Interval another = new IntervalBuilder().min(-1).max(3).build();
 		assertFalse(one.isIntersected(another));
 	}
 }
