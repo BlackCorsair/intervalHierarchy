@@ -41,4 +41,11 @@ public class OpenIntervalTest {
 		Interval another = new IntervalBuilder().min(15).max(16).build();
 		assertFalse(one.isIntersected(another));
 	}
+	
+	@Test
+	public void testIsNotIntersectedWhenMinMoreMax() {
+		Interval one = new IntervalBuilder().min(3).max(14).build();
+		Interval another = new IntervalBuilder().min(0).max(2).build();
+		assertFalse(one.isIntersected(another));
+	}
 }
