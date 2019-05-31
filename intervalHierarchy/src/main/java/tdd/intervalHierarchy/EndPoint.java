@@ -8,15 +8,16 @@ public class EndPoint {
 	
 	public EndPoint(int value, boolean open) {
 		this.value = value;
+		this.open = open;
 	}
 	
 	public Position getPositionFrom(EndPoint another) {
 		if (another.getValue() == this.value && !this.open)
 			return Position.TOP;
 		if (another.getValue() > this.value)
-			return Position.RIGHT;
-		if (another.getValue() < this.value)
 			return Position.LEFT;
+		if (another.getValue() < this.value)
+			return Position.RIGHT;
 		return null;
 	}
 	
