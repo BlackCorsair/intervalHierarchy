@@ -8,26 +8,18 @@ public class IntervalBuilder {
 	private EndPoint min;
 	private EndPoint max;
 	
-	private boolean closed;
-
 	public IntervalBuilder() {
-		this.min = new EndPoint(0,false);
-		this.max = new EndPoint(1,false);
-		this.closed = false;
+		this.min = new EndPoint(0, false);
+		this.max = new EndPoint(1, false);
 	}
 
-	public IntervalBuilder closed() {
-		this.closed = true;
+	public IntervalBuilder min(int min, boolean open) {
+		this.min = new EndPoint(min, open);
 		return this;
 	}
 
-	public IntervalBuilder min(EndPoint min) {
-		this.min = min;
-		return this;
-	}
-
-	public IntervalBuilder max(EndPoint max) {
-		this.max = max;
+	public IntervalBuilder max(int max, boolean open) {
+		this.max = new EndPoint(max, open);
 		return this;
 	}
 	
