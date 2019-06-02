@@ -1,8 +1,5 @@
 package tdd.intervalHierarchy;
 
-/*
- * This is an Utopy non-tested
- */
 public class Interval {
 	private EndPoint min;
 	private EndPoint max;
