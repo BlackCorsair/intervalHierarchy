@@ -1,20 +1,35 @@
 package tdd.intervalHierarchy;
-
+/*
+ * This is an Utopy non-tested
+ */
 public class Interval {
-	protected double min;
-
-	protected double max;
-
-	public Interval(double min, double max) {
+	private EndPoint min;
+	private EndPoint max;
+	
+	public Interval(EndPoint min, EndPoint max) {
 		this.min = min;
 		this.max = max;
 	}
-
+	
 	public boolean isIntersected(Interval another) {
-		return this.isIncluded(another.min) || this.isIncluded(another.max) || another.isIncluded(this.min);
+		return isIncluded(another.getMax()) || isIncluded(another.getMin())
+				|| min.getPositionFrom(another.getMin()) == Position.RIGHT
+					&& max.getPositionFrom(another.getMax()) == Position.LEFT;
 	}
-
-	public boolean isIncluded(double value) {
-		return true;
+	
+	public boolean isIncluded(EndPoint point) {
+		return min.getPositionFrom(point) == Position.LEFT
+				&& max.getPositionFrom(point) == Position.RIGHT
+				|| min.getPositionFrom(point) == Position.TOP
+				|| max.getPositionFrom(point) == Position.TOP;
+				
+	}
+	
+	public EndPoint getMin() {
+		return this.min;
+	}
+	
+	public EndPoint getMax() {
+		return this.max;
 	}
 }
