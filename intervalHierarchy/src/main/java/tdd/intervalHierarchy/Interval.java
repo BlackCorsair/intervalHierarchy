@@ -14,7 +14,9 @@ public class Interval {
 	public boolean isIntersected(Interval another) {
 		return isIncluded(another.getMax()) || isIncluded(another.getMin())
 				|| min.getPositionFrom(another.getMin()) == Position.RIGHT
-					&& max.getPositionFrom(another.getMax()) == Position.LEFT;
+					&& max.getPositionFrom(another.getMax()) == Position.LEFT
+				|| min.getPositionFrom(another.getMin()) == null
+					&& max.getPositionFrom(another.getMax()) == null;
 	}
 	
 	public boolean isIncluded(EndPoint point) {
